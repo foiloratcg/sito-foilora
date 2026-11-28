@@ -4,85 +4,136 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Foilora · L'app di riferimento per chi ama le carte collezionabili</title>
-<meta name="description" content="Foilora è l'app di riferimento per chi ama le carte collezionabili: prezzi, occasioni, mazzi pronti, andamento dei prezzi e carrello unico, per Riftbound, Magic, Pokémon e tutti gli altri giochi.">
+<meta name="description" content="Foilora: cerchi una carta o incolli un mazzo e vedi il prezzo finito, spedizione inclusa. Mazzi pronti, occasioni, andamento dei prezzi, collezione e lista dei desideri. Riftbound, Magic, Pokémon, One Piece.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://foilora.app/">
+<meta property="og:title" content="Foilora · Tutto il mondo delle carte, in un'app sola">
+<meta property="og:description" content="Il prezzo finito del tuo mazzo, spedizione inclusa. Riftbound, Magic, Pokémon, One Piece.">
+<meta name="theme-color" content="#0B0A16">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237CF7E4'/%3E%3Cstop offset='.4' stop-color='%238B7BFF'/%3E%3Cstop offset='.7' stop-color='%23FF7AD9'/%3E%3Cstop offset='1' stop-color='%23FFD27A'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='4' y='4' width='56' height='56' rx='16' fill='url(%23g)'/%3E%3Cpath d='M24 18h20v7H32v6h10v7H32v10h-8z' fill='%230B0A16'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{--notte:#0B0A16;--inchiostro:#1A1630;--inchiostro2:#241F42;--bordo:#2E2856;--bordo2:#3A3360;--chiaro:#F4F1FF;--tenue:#B3ADD1;
-  --viola:#8B7BFF;--acqua:#7CF7E4;--rosa:#FF7AD9;--oro:#FFD27A;--foil:linear-gradient(100deg,#7CF7E4 0%,#8B7BFF 38%,#FF7AD9 68%,#FFD27A 100%)}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+  --viola:#8B7BFF;--acqua:#7CF7E4;--rosa:#FF7AD9;--oro:#FFD27A;--foil:linear-gradient(100deg,#7CF7E4 0%,#8B7BFF 38%,#FF7AD9 68%,#FFD27A 100%);color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
 body{margin:0;background:radial-gradient(900px 500px at 80% -100px,rgba(139,123,255,.22),transparent 70%),radial-gradient(700px 400px at 0% 30%,rgba(124,247,228,.08),transparent 70%),var(--notte);
-  color:var(--chiaro);font:17px/1.6 Inter,"Segoe UI",system-ui,sans-serif}
+  color:var(--chiaro);font:17px/1.6 Inter,"Segoe UI",system-ui,sans-serif;overflow-x:clip}
 a{color:var(--acqua)}
 .contenitore{max-width:1120px;margin:0 auto;padding:0 22px}
-header{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
+header{display:flex;align-items:center;justify-content:space-between;padding:22px 0;gap:16px}
 .marchio{display:flex;align-items:center;gap:10px;font:700 22px Unbounded,"Segoe UI",sans-serif;color:var(--chiaro);text-decoration:none}
 .marchio i{width:28px;height:28px;border-radius:9px;background:var(--foil);display:inline-block}
 nav a{color:var(--tenue);text-decoration:none;margin-left:22px;font-weight:500}
 nav a:hover{color:var(--chiaro)}
-.eroe{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:50px 0 30px}
-h1{font:700 clamp(34px,5vw,56px)/1.08 Unbounded,"Segoe UI",sans-serif;margin:0}
+.eroe{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;padding:44px 0 30px}
+h1{font:700 clamp(32px,5vw,56px)/1.08 Unbounded,"Segoe UI",sans-serif;margin:0;text-wrap:balance}
 h1 span{background:var(--foil);-webkit-background-clip:text;background-clip:text;color:transparent}
 .eroe p{color:var(--tenue);font-size:19px;margin:20px 0 28px;max-width:540px}
-.stato{display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;border:1px solid var(--bordo2);background:var(--inchiostro);font-weight:600}
+.pulsante{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:12px 24px;border-radius:999px;border:0;background:var(--foil);color:var(--notte);font:700 16px Inter,"Segoe UI",sans-serif;text-decoration:none;cursor:pointer}
+.pulsante:focus-visible,input:focus-visible{outline:3px solid var(--acqua);outline-offset:3px}
+.stato{display:inline-flex;align-items:center;gap:10px;margin-left:14px;color:var(--tenue);font-weight:600;font-size:15px}
 .stato b{width:9px;height:9px;border-radius:50%;background:var(--acqua);box-shadow:0 0 12px var(--acqua)}
-.telefono{justify-self:center;width:min(300px,80%);border-radius:30px;border:1px solid var(--bordo2);box-shadow:0 30px 80px rgba(139,123,255,.25);display:block}
-.schermo{margin:40px 0 10px;border-radius:22px;border:1px solid var(--bordo2);overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.5)}
-.schermo img{display:block;width:100%;height:auto}
-.didascalia{color:var(--tenue);font-size:14px;text-align:center;margin:10px 0 0}
+/* Esempio "Completa il mazzo" disegnato in HTML: leggibile anche sul telefono */
+.esempio{background:linear-gradient(180deg,var(--inchiostro2),var(--inchiostro));border:1px solid var(--bordo2);border-radius:28px;padding:24px;box-shadow:0 30px 80px rgba(139,123,255,.25)}
+.esempio .titolo{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:14px}
+.esempio .titolo strong{font:700 19px Unbounded,"Segoe UI",sans-serif}
+.esempio .titolo small{color:var(--tenue);font-size:13px}
+.righe{list-style:none;margin:0;padding:0;font-size:15px}
+.righe li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--bordo)}
+.righe li span:first-child{color:var(--chiaro)}
+.righe em{font-style:normal;color:var(--tenue);margin-right:6px}
+.righe li span:last-child,.conto span:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}
+.conto{margin-top:12px;font-size:15px;color:var(--tenue)}
+.conto div{display:flex;justify-content:space-between;gap:12px;padding:3px 0}
+.totale{margin-top:12px;padding:14px 16px;border-radius:18px;background:rgba(124,247,228,.08);border:1px solid rgba(124,247,228,.35);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.totale span:first-child{font-weight:600}
+.totale small{display:block;color:var(--tenue);font-weight:400;font-size:13px}
+.totale b{font:700 26px Unbounded,"Segoe UI",sans-serif;color:var(--acqua);white-space:nowrap}
+.nota{color:var(--tenue);font-size:13px;margin:10px 4px 0}
 section{padding:60px 0 10px}
-h2{font:700 28px/1.2 Unbounded,"Segoe UI",sans-serif;margin:0 0 26px}
-.griglia{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+h2{font:700 28px/1.2 Unbounded,"Segoe UI",sans-serif;margin:0 0 26px;text-wrap:balance}
+.griglia{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .scheda{background:var(--inchiostro);border:1px solid var(--bordo);border-radius:24px;padding:26px}
 .scheda .num{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:13px;background:var(--foil);color:var(--notte);font:700 18px Unbounded,"Segoe UI",sans-serif}
 .scheda h3{font-size:19px;margin:16px 0 8px}
 .scheda p{color:var(--tenue);margin:0;font-size:16px}
+.presto{border-style:dashed}
 .giochi{display:flex;flex-wrap:wrap;gap:10px}
 .giochi span{padding:8px 16px;border-radius:999px;border:1px solid var(--bordo2);background:var(--inchiostro);font-weight:600}
 .giochi span.primo{border-color:var(--viola);background:rgba(139,123,255,.15)}
+.prova{background:var(--inchiostro);border:1px solid var(--viola);border-radius:28px;padding:32px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.prova p{color:var(--tenue);margin:0}
+form{display:grid;gap:12px}
+input[type=email]{width:100%;min-height:50px;padding:12px 16px;border-radius:14px;border:1px solid var(--bordo2);background:var(--notte);color:var(--chiaro);font:16px Inter,"Segoe UI",sans-serif}
+label.consenso{display:flex;gap:10px;align-items:flex-start;color:var(--tenue);font-size:14px}
+label.consenso input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--viola)}
+.esito{color:var(--acqua);font-weight:600;min-height:1.4em;margin:0}
 .en{background:var(--inchiostro);border:1px solid var(--bordo);border-radius:24px;padding:28px 30px}
 .en h2{font-size:22px}
 .en p,.en li{color:var(--tenue);font-size:15.5px}
 .en li{margin:4px 0}
 footer{padding:50px 0 40px;margin-top:60px;border-top:1px solid var(--bordo);color:var(--tenue);font-size:13.5px}
 footer p{margin:6px 0}
-@media (max-width:860px){.eroe{grid-template-columns:1fr}.griglia{grid-template-columns:1fr}nav{display:none}.telefono{width:240px}}
+@media (max-width:860px){.eroe,.prova{grid-template-columns:1fr}.griglia{grid-template-columns:1fr}nav{display:none}.stato{margin:14px 0 0;display:flex}}
+@media (max-width:600px){.esempio{padding:18px}.prova{padding:22px}}
 </style>
 </head>
 <body>
 <div class="contenitore">
   <header>
     <a class="marchio" href="#"><i></i>Foilora</a>
-    <nav><a href="#funzioni">Funzioni</a><a href="#come">Come funziona</a><a href="#giochi">Giochi</a><a href="#english">English</a></nav>
+    <nav><a href="#funzioni">Funzioni</a><a href="#come">Come funziona</a><a href="#giochi">Giochi</a><a href="#prova">Provala</a><a href="#english">English</a></nav>
   </header>
 
   <div class="eroe">
     <div>
       <h1>Tutto il mondo delle carte,<br><span>in un'app sola.</span></h1>
-      <p>Foilora è l'app di riferimento per chi ama le carte collezionabili: cerchi una carta e vedi tutti i prezzi, scopri le occasioni
-        del giorno e le carte che salgono, scegli i mazzi del momento e li completi al prezzo più basso, in un pacco solo.
-        Riftbound, Magic, Pokémon e tutti gli altri giochi, sempre aggiornati.</p>
-      <div class="stato"><b></b>In arrivo: prima versione in prova</div>
+      <p>Cerchi una carta o incolli la lista del tuo mazzo e Foilora ti dice quanto paghi davvero: carte, spedizione e commissioni,
+        tutto compreso. Poi scopri le occasioni del giorno, i mazzi del momento e come cambiano i prezzi.
+        Riftbound, Magic, Pokémon, One Piece e gli altri giochi.</p>
+      <a class="pulsante" href="#prova">Voglio provarla</a>
+      <span class="stato"><b></b>Prima versione in prova</span>
     </div>
-    <img class="telefono" src="telefono.jpg" alt="Foilora sul telefono: la schermata Completa il mazzo">
+
+    <div>
+      <div class="esempio" aria-label="Esempio della schermata Completa il mazzo">
+        <div class="titolo"><strong>Completa il mazzo</strong><small>Riftbound · 12 carte</small></div>
+        <ul class="righe">
+          <li><span><em>1×</em>Jinx, Loose Cannon</span><span>6,40 €</span></li>
+          <li><span><em>2×</em>Jinx, Rebel</span><span>2,40 €</span></li>
+          <li><span><em>1×</em>Yasuo, Remorseful</span><span>5,85 €</span></li>
+          <li><span><em>2×</em>Eclipse Herald</span><span>1,70 €</span></li>
+          <li><span><em>3×</em>Flurry of Blades</span><span>1,65 €</span></li>
+          <li><span><em>3×</em>Hidden Blade</span><span>3,75 €</span></li>
+        </ul>
+        <div class="conto">
+          <div><span>Carte</span><span>21,75 €</span></div>
+          <div><span>Spedizione (2 pacchi, tracciata)</span><span>4,90 €</span></div>
+          <div><span>Commissioni del negozio</span><span>1,69 €</span></div>
+        </div>
+        <div class="totale"><span>Prezzo finito<small>quello che paghi davvero</small></span><b>28,34 €</b></div>
+      </div>
+      <p class="nota">Esempio con prezzi dimostrativi.</p>
+    </div>
   </div>
 
-  <div class="schermo"><img src="completa-il-mazzo.jpg" alt="Foilora sul computer: lista del mazzo, totale, carte e carrello" loading="lazy"></div>
-  <p class="didascalia">La schermata "Completa il mazzo" (esempio con dati dimostrativi).</p>
-
   <section id="funzioni">
-    <h2>Cosa fa Foilora</h2>
+    <h2>Cosa fa Foilora oggi</h2>
     <div class="griglia">
-      <div class="scheda"><h3>🔎 Cerca qualsiasi carta</h3><p>Tutte le edizioni e le stampe, con foto grande e i prezzi dei negozi a confronto: normale e foil, lingua e condizione.</p></div>
-      <div class="scheda"><h3>🧩 Completa il mazzo</h3><p>Incolli la lista e Foilora trova l'offerta più bassa per ogni carta: totale vero e quanti pacchi ti arrivano.</p></div>
-      <div class="scheda"><h3>🏆 Mazzi pronti</h3><p>I mazzi del momento, ufficiali e dai tornei, divisi per livello e sempre aggiornati: un tocco e vedi quanto costano.</p></div>
+      <div class="scheda"><h3>🔎 Cerca qualsiasi carta</h3><p>Tutte le edizioni e le stampe, con foto grande e le offerte in vendita su CardTrader a confronto: normale e foil, lingua e condizione.</p></div>
+      <div class="scheda"><h3>🧩 Completa il mazzo</h3><p>Incolli la lista e Foilora trova l'offerta più bassa per ogni carta, con il prezzo finito: spedizione e commissioni comprese.</p></div>
+      <div class="scheda"><h3>🏆 Mazzi pronti</h3><p>I mazzi del momento, ufficiali e dai tornei, divisi per livello: un tocco e vedi quanto costano.</p></div>
       <div class="scheda"><h3>🔥 Occasioni del giorno</h3><p>Le carte in vendita adesso molto sotto il prezzo degli altri venditori, prima che spariscano.</p></div>
-      <div class="scheda"><h3>📈 Prezzi nel tempo</h3><p>Grafici dell'andamento, le carte in rialzo e quelle in ribasso: capisci quando conviene comprare.</p></div>
-      <div class="scheda"><h3>🛒 Un carrello, un pacco</h3><p>Metti tutto nel carrello e scegli i venditori che spediscono insieme: meno spedizioni, meno spese.</p></div>
+      <div class="scheda"><h3>📈 Prezzi nel tempo</h3><p>Grafici dell'andamento registrato da Foilora, le carte in rialzo e quelle in ribasso: capisci quando conviene comprare.</p></div>
+      <div class="scheda"><h3>🛒 Carrello in un tocco</h3><p>Foilora prepara il carrello sul negozio con i venditori scelti per spedire meno pacchi. Il pagamento lo fai sempre tu, sul sito del negozio.</p></div>
+      <div class="scheda"><h3>💎 La tua collezione</h3><p>Le carte che hai, con il loro valore aggiornato.</p></div>
+      <div class="scheda"><h3>⭐ Lista dei desideri</h3><p>Salvi le carte che vuoi e scegli un prezzo: Foilora ti avvisa quando scendono sotto.</p></div>
+      <div class="scheda"><h3>🛠️ Costruisci il mazzo</h3><p>Crei il tuo mazzo carta per carta e vedi subito quanto costa completarlo.</p></div>
       <div class="scheda"><h3>✦ Le carte come in mano</h3><p>Ogni carta si apre in grande e si muove con l'effetto della sua finitura: foil, holo, metallo.</p></div>
-      <div class="scheda"><h3>📰 Sempre al passo</h3><p>Nuove espansioni, liste dei tornei e carte bandite: Foilora si aggiorna ogni giorno, tu giochi.</p></div>
-      <div class="scheda"><h3>🎁 In arrivo</h3><p>La tua collezione con il suo valore, la lista dei desideri, il costruttore di mazzi e gli avvisi di prezzo.</p></div>
+      <div class="scheda presto"><h3>📱 In arrivo: l'app per il telefono</h3><p>Oggi Foilora funziona sul computer. Poi arriva sul telefono, con la tua collezione sempre con te.</p></div>
+      <div class="scheda presto"><h3>🏪 In arrivo: altri negozi</h3><p>Oggi i prezzi vengono da CardTrader. Vogliamo aggiungere altri negozi per confrontarli tutti insieme.</p></div>
     </div>
   </section>
 
@@ -90,8 +141,8 @@ footer p{margin:6px 0}
     <h2>Semplice dal primo tocco</h2>
     <div class="griglia">
       <div class="scheda"><span class="num">1</span><h3>Scegli il gioco</h3><p>Riftbound, Magic, Pokémon, One Piece e gli altri: tutto si adatta al gioco che scegli.</p></div>
-      <div class="scheda"><span class="num">2</span><h3>Cerca, scopri, confronta</h3><p>Una carta, un mazzo o le occasioni di oggi: i prezzi veri, in euro, in un colpo d'occhio.</p></div>
-      <div class="scheda"><span class="num">3</span><h3>Compra in un pacco</h3><p>Riempi il carrello e completi l'acquisto tu, sul sito del negozio. Foilora non compra mai al posto tuo.</p></div>
+      <div class="scheda"><span class="num">2</span><h3>Cerca, scopri, confronta</h3><p>Una carta, un mazzo o le occasioni di oggi: prezzi veri in euro, spedizione compresa, in un colpo d'occhio.</p></div>
+      <div class="scheda"><span class="num">3</span><h3>Compra con meno pacchi</h3><p>Il carrello è pronto e completi l'acquisto tu, sul sito del negozio. Foilora non compra mai al posto tuo.</p></div>
     </div>
   </section>
 
@@ -100,28 +151,56 @@ footer p{margin:6px 0}
     <div class="giochi"><span class="primo">Riftbound</span><span>Magic: The Gathering</span><span>Pokémon</span><span>One Piece</span><span>e gli altri giochi di carte collezionabili</span></div>
   </section>
 
+  <section id="prova">
+    <div class="prova">
+      <div>
+        <h2>Vuoi provarla per primo?</h2>
+        <p>Lasciaci la tua email: ti scriviamo quando c'è posto nella prova. Niente pubblicità, solo quel messaggio.</p>
+      </div>
+      <form id="modulo" action="https://formsubmit.co/foilora.tcg@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Nuova iscrizione alla prova di Foilora">
+        <input type="hidden" name="_next" value="https://foilora.app/?grazie=1#prova">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="email" id="email" name="email" required placeholder="La tua email" autocomplete="email" aria-label="La tua email">
+        <label class="consenso"><input type="checkbox" name="consenso" value="si" required>Accetto che Foilora usi la mia email solo per avvisarmi della prova. Posso chiedere di cancellarla quando voglio scrivendo a foilora.tcg@gmail.com.</label>
+        <button class="pulsante" type="submit">Iscrivimi alla prova</button>
+        <p class="esito" id="esito" role="status"></p>
+      </form>
+    </div>
+  </section>
+
   <section id="english">
     <div class="en">
       <h2>About Foilora (English)</h2>
-      <p>Foilora aims to be the reference app for trading card game players in Europe, with Riftbound as its main game: card search with
-        prices from several shops, deck completion at the lowest price, ready-made decklists, daily deals, price history and a single cart
-        with combined shipping. The player always checks out on the marketplace website themselves.</p>
+      <p>Foilora aims to be the reference app for trading card game players in Europe, with Riftbound as its main game. It shows the
+        full price you actually pay (cards, shipping and marketplace fees) and the player always checks out on the marketplace website themselves.</p>
       <ul>
-        <li>Card library with all printings, deck completion and ready-made decklists (official precons and published tournament lists, each with its source).</li>
-        <li>Daily deals and price history recorded by Foilora; collection and wishlist coming soon.</li>
+        <li>Card search with all printings and the listings currently for sale on CardTrader (finish, language, condition). More marketplaces are planned.</li>
+        <li>Deck completion at the lowest full price, ready-made decklists (official precons and published tournament lists, each with its source) and a deck builder.</li>
+        <li>Daily deals, price history recorded by Foilora, collection with its value, and a wishlist with price alerts.</li>
         <li>No gameplay simulation, no matchmaking or ranking, no betting, no blockchain. We do not publish play rates, win rates or matchup data.</li>
         <li>The core features are and will stay free.</li>
       </ul>
-      <p>Status: working desktop prototype, public launch planned soon. Contact: <a href="mailto:foilora.tcg@gmail.com">foilora.tcg@gmail.com</a></p>
+      <p>Status: working desktop app in early testing; mobile app planned. Contact: <a href="mailto:foilora.tcg@gmail.com">foilora.tcg@gmail.com</a></p>
     </div>
   </section>
 
   <footer>
     <p>© 2026 Foilora · Contatti: <a href="mailto:foilora.tcg@gmail.com">foilora.tcg@gmail.com</a></p>
     <p>Foilora was created under Riot Games' "Legal Jibber Jabber" policy using assets owned by Riot Games. Riot Games does not endorse or sponsor this project.</p>
-    <p>Riftbound, League of Legends, Magic: The Gathering, Pokémon, One Piece and all other card game names are trademarks of their respective owners.
+    <p>Riftbound, League of Legends, Magic: The Gathering, Pokémon, One Piece, CardTrader and all other names are trademarks of their respective owners.
       Foilora is an independent project and is not affiliated with, endorsed or sponsored by them.</p>
   </footer>
 </div>
+<script>
+{
+  const esito=document.getElementById('esito');
+  if(/[?&]grazie=1/.test(location.search)) esito.textContent='Grazie! Ti scriviamo quando c\'è posto nella prova.';
+  if(!/foilora\.app$/.test(location.hostname)){
+    document.getElementById('modulo').addEventListener('submit',e=>{e.preventDefault();esito.textContent='Questa è solo un\'anteprima: sul sito vero l\'iscrizione arriva a foilora.tcg@gmail.com.';});
+  }
+}
+</script>
 </body>
 </html>
