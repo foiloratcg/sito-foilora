@@ -10,7 +10,7 @@
 <meta property="og:title" content="Foilora · Tutto il mondo delle carte, in un'app sola">
 <meta property="og:description" content="Il prezzo finito del tuo mazzo, spedizione inclusa. Riftbound, Magic, Pokémon, One Piece.">
 <meta name="theme-color" content="#0B0A16">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237CF7E4'/%3E%3Cstop offset='.4' stop-color='%238B7BFF'/%3E%3Cstop offset='.7' stop-color='%23FF7AD9'/%3E%3Cstop offset='1' stop-color='%23FFD27A'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='4' y='4' width='56' height='56' rx='16' fill='url(%23g)'/%3E%3Cpath d='M24 18h20v7H32v6h10v7H32v10h-8z' fill='%230B0A16'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='.4' x2='1' y2='.6'%3E%3Cstop offset='0' stop-color='%237CF7E4'/%3E%3Cstop offset='.38' stop-color='%238B7BFF'/%3E%3Cstop offset='.68' stop-color='%23FF7AD9'/%3E%3Cstop offset='1' stop-color='%23FFD27A'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='17' fill='url(%23g)'/%3E%3Cpath d='M23 16H45.7V24H32.2V31H43.5V39H32.2V51H23Z' fill='%230B0A16'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
 <style>
@@ -24,7 +24,7 @@ a{color:var(--acqua)}
 .contenitore{max-width:1120px;margin:0 auto;padding:0 22px}
 header{display:flex;align-items:center;justify-content:space-between;padding:22px 0;gap:16px}
 .marchio{display:flex;align-items:center;gap:10px;font:700 22px Unbounded,"Segoe UI",sans-serif;color:var(--chiaro);text-decoration:none}
-.marchio i{width:28px;height:28px;border-radius:9px;background:var(--foil);display:inline-block}
+.marchio .logo{width:32px;height:32px;display:block;flex:none;filter:drop-shadow(0 0 10px rgba(139,123,255,.45))}
 nav a{color:var(--tenue);text-decoration:none;margin-left:22px;font-weight:500}
 nav a:hover{color:var(--chiaro)}
 .eroe{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;padding:44px 0 30px}
@@ -83,15 +83,15 @@ footer p{margin:6px 0}
 <body>
 <div class="contenitore">
   <header>
-    <a class="marchio" href="#"><i></i>Foilora</a>
+    <a class="marchio" href="#"><svg class="logo" aria-hidden="true" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='lg' x1='0' y1='.4' x2='1' y2='.6'><stop offset='0' stop-color='#7CF7E4'/><stop offset='.38' stop-color='#8B7BFF'/><stop offset='.68' stop-color='#FF7AD9'/><stop offset='1' stop-color='#FFD27A'/></linearGradient></defs><rect width='64' height='64' rx='17' fill='url(#lg)'/><path d='M23 16H45.7V24H32.2V31H43.5V39H32.2V51H23Z' fill='#0B0A16'/></svg>Foilora</a>
     <nav><a href="#funzioni">Funzioni</a><a href="#come">Come funziona</a><a href="#giochi">Giochi</a><a href="#prova">Provala</a><a href="#english">English</a></nav>
   </header>
 
   <div class="eroe">
     <div>
       <h1>Tutto il mondo delle carte,<br><span>in un'app sola.</span></h1>
-      <p>Cerchi una carta o incolli la lista del tuo mazzo e Foilora ti dice quanto paghi davvero: carte, spedizione e commissioni,
-        tutto compreso. Poi scopri le occasioni del giorno, i mazzi del momento e come cambiano i prezzi.
+      <p>Le funzioni delle app per carte che ci sono oggi, riunite in un'app sola e fatte meglio. Risparmi tempo e risparmi soldi:
+        scegli il mazzo che vuoi, trovi già tutte le carte, vedi subito il prezzo finito con la spedizione e lo compri in pochi tocchi.
         Riftbound, Magic, Pokémon, One Piece e gli altri giochi.</p>
       <a class="pulsante" href="#prova">Voglio provarla</a>
       <span class="stato"><b></b>Prima versione in prova</span>
@@ -163,7 +163,7 @@ footer p{margin:6px 0}
         <input type="hidden" name="_template" value="table">
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <input type="email" id="email" name="email" required placeholder="La tua email" autocomplete="email" aria-label="La tua email">
-        <label class="consenso"><input type="checkbox" name="consenso" value="si" required>Accetto che Foilora usi la mia email solo per avvisarmi della prova. Posso chiedere di cancellarla quando voglio scrivendo a foilora.tcg@gmail.com.</label>
+        <label class="consenso"><input type="checkbox" name="consenso" value="si" required>Accetto che Foilora usi la mia email solo per avvisarmi della prova. L'email ci arriva tramite FormSubmit (formsubmit.co), il servizio che invia il modulo. Posso chiedere di cancellarla quando voglio scrivendo a foilora.tcg@gmail.com.</label>
         <button class="pulsante" type="submit">Iscrivimi alla prova</button>
         <p class="esito" id="esito" role="status"></p>
       </form>
